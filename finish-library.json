@@ -1,0 +1,30 @@
+{
+  "surfaces": {
+    "timber":    {"size":1024,"span":[1.35,0.42],"bump":0.44,"variation":0.48,"rough":0.41,"spread":0.23},
+    "pile":      {"size":1024,"span":[0.15,0.15],"bump":0.68,"variation":0.40,"rough":0.93,"spread":0.10},
+    "cloth":     {"size":1024,"span":[0.22,0.22],"bump":0.54,"variation":0.34,"rough":0.84,"spread":0.16},
+    "mineral":   {"size":1024,"span":[1.9,1.9],"bump":0.13,"variation":0.38,"rough":0.20,"spread":0.095},
+    "plaster":   {"size":512,"span":[0.68,0.68],"bump":0.26,"variation":0.19,"rough":0.77,"spread":0.19},
+    "brushed":   {"size":512,"span":[0.19,0.19],"bump":0.20,"variation":0.13,"rough":0.32,"spread":0.19},
+    "ceramic":   {"size":512,"span":[0.25,0.25],"bump":0.13,"variation":0.10,"rough":0.26,"spread":0.10},
+    "polymer":   {"size":512,"span":[0.13,0.13],"bump":0.23,"variation":0.10,"rough":0.45,"spread":0.16},
+    "paper":     {"size":512,"span":[0.17,0.17],"bump":0.14,"variation":0.10,"rough":0.61,"spread":0.13},
+    "botanical": {"size":512,"span":[0.09,0.09],"bump":0.20,"variation":0.09,"rough":0.44,"spread":0.14},
+    "clear":     {"size":256,"span":[0.31,0.31],"bump":0.012,"variation":0.012,"rough":0.16,"spread":0.035}
+  },
+  "rules": [
+    ["^LCD |glazing|glass|water blue","clear"],
+    ["sandstone|sand tile|blush travertine","mineral"],
+    ["maple|oak|walnut|beech|sawn ash","timber"],
+    ["plush|teddy|nap$|oat carpet","pile"],
+    ["upholstery|boucle|woven |cotton|throw |embroidery|play mat","cloth"],
+    ["bronze|steel|aluminium|champagne|alloy|brass","brushed"],
+    ["plaster|limewash|grout|limestone|pavement|potting soil","plaster"],
+    ["leaf|veined|petiole","botanical"],
+    ["powder enamel","polymer"],
+    ["porcelain|stoneware|ceramic|enamel|lacquer|ivory","ceramic"],
+    ["key legends","polymer"],
+    ["paper|printing|printed|ink|spine |nursery stock","paper"],
+    ["graphite|polymer|charcoal|petal|pistachio|honey|sky|coral|petrol|rose wing","polymer"]
+  ]
+}

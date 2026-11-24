@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Three-floor Interior · 3D Building</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js",
+        "three/addons/": "./node_modules/three/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">THREE-FLOOR INTERIOR</p>
+        <h1>Atrium Building</h1>
+      </div>
+      <nav class="view-controls" aria-label="Scene views">
+        <select id="floor" class="view-button" aria-label="Choose floor">
+          <option value="first">1 · First floor</option>
+          <option value="second">2 · Second floor</option>
+          <option value="third">3 · Third floor</option>
+          <option value="building" selected>All three floors</option>
+        </select>
+        <button class="view-button" id="view-menu" type="button" aria-expanded="false" aria-controls="view-options">Views</button>
+        <div id="view-options" role="group" aria-label="Floor destinations">
+        <button class="view-button active" data-view="overview">Overview</button>
+        <button class="view-button" data-view="store">Store</button>
+        <button class="view-button" data-view="nursery">Nursery</button>
+        <button class="view-button" data-view="print">Printing</button>
+        <button class="view-button" data-view="study">Study</button>
+        <button class="view-button" data-view="dining">Dining</button>
+        <button class="view-button" data-view="plan">Room layout</button>
+        <select id="suite" class="view-button" aria-label="Visit a third-floor bedroom" hidden><option value="">Visit a bedroom…</option></select>
+        <button class="view-button" id="visit-gallery" hidden>Locker gallery</button>
+        <button class="view-button" data-view="lift">Elevator</button>
+        <button class="view-button" data-view="reset">Reset</button>
+        </div>
+        <button class="view-button" id="walk" aria-pressed="false">Walk inside</button>
+        <button class="view-button" id="fullscreen" type="button" aria-pressed="false">Fullscreen</button>
+      </nav>
+    </header>
+    <div id="viewer" aria-label="Interactive three-floor building"></div>
+    <div id="screen-hint" role="status" hidden></div>
+    <section id="tour" hidden aria-label="Walking tour controls">
+      <div class="tour-guide">
+        <strong id="tour-location">Entering building…</strong>
+        <span class="desktop-help">WASD to walk · Drag to look · ← → to turn · I/K to tilt · E to interact</span>
+        <span class="touch-help">Hold arrows to walk · Drag the room to look</span>
+        <button type="button" id="lift-call" hidden>Use elevator <kbd>E</kbd></button>
+        <button type="button" id="locker-action" hidden>Open locker</button>
+      </div>
+      <div class="step-pad" aria-label="Move">
+        <button data-step="KeyW" aria-label="Forward">↑</button>
+        <button data-step="KeyA" aria-label="Step left">←</button>
+        <button data-step="KeyS" aria-label="Back">↓</button>
+        <button data-step="KeyD" aria-label="Step right">→</button>
+      </div>
+      <div id="lift-panel" role="dialog" aria-label="Elevator destinations" hidden>
+        <strong>Elevator · Select a floor</strong>
+        <button data-stop="third">03　Student support</button>
+        <button data-stop="second">02　Print, study &amp; dining</button>
+        <button data-stop="first">01　Store &amp; nursery</button>
+        <button id="lift-close">Close</button>
+      </div>
+    </section>
+    <div id="loading" class="loading" role="status" aria-live="polite">Loading 3D interior…</div>
+  </main>
+  <script>
+    window.addEventListener('error', (event) => {
+      if (event.target instanceof HTMLScriptElement || event.target === window) {
+        const status = document.getElementById('loading');
+        if (status) {
+          status.textContent = event.message
+            ? `3D viewer startup error: ${event.message}`
+            : 'Could not load the 3D viewer dependencies. Run npm install in this folder, then reload.';
+          status.classList.add('error');
+        }
+      }
+    }, true);
+  </script>
+  <script type="module" src="./viewer-bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+@echo off
+cd /d "%~dp0"
+call npm.cmd run dev -- --port 4196 --open "/?tour=1"
